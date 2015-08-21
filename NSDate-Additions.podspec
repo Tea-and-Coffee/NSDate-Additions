@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "NSDate-Additions"
-  s.version          = "0.0.5"
+  s.version          = "0.0.7"
   s.summary          = "Helpful additions for NSDate."
   s.description      = <<-DESC
                        Fork from Erica https://github.com/erica/NSDate-Extensions
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
-
+  s.module_name = "NSDate_Additions"
   s.source_files = 'Pod/Classes'
   s.resource_bundles = {
     'NSDate-Additions' => ['Pod/Assets/*.png']
