@@ -389,6 +389,25 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 	return [[NSDate currentCalendar] dateFromComponents:components];
 }
 
+- (NSDate *)dateAtStartOfMonth {
+    NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
+    components.hour = 0;
+    components.minute = 0;
+    components.second = 0;
+    components.day = 1;
+    return [[NSDate currentCalendar] dateFromComponents:components];
+}
+
+- (NSDate *)dateAtEndOfMonth {
+    NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
+    components.hour = 23;
+    components.minute = 59;
+    components.second = 59;
+    NSRange range = [[NSDate currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:[NSDate date]];
+    components.day = range.length;
+    return [[NSDate currentCalendar] dateFromComponents:components];
+}
+
 #pragma mark - Retrieving Intervals
 
 - (NSInteger) minutesAfterDate: (NSDate *) aDate
