@@ -370,8 +370,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 
 #pragma mark - Extremes
 
-- (NSDate *) dateAtStartOfDay
-{
+- (NSDate *) dateAtStartOfDay {
     NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
     components.hour = 0;
     components.minute = 0;
@@ -380,10 +379,29 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 }
 
 // Thanks gsempe & mteece
-- (NSDate *) dateAtEndOfDay
-{
+- (NSDate *) dateAtEndOfDay {
     NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
     components.hour = 23; // Thanks Aleksey Kononov
+    components.minute = 59;
+    components.second = 59;
+    return [[NSDate currentCalendar] dateFromComponents:components];
+}
+
+- (NSDate *) dateAtStartOfWeek {
+    NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
+    NSInteger weekday = components.weekday;
+    [components setDay: components.day - weekday + 1];
+    components.hour = 0;
+    components.minute = 0;
+    components.second = 0;
+    return [[NSDate currentCalendar] dateFromComponents:components];
+}
+
+- (NSDate *) dateAtEndOfWeek {
+    NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
+    NSInteger weekday = components.weekday;
+    [components setDay: components.day - weekday + 7];
+    components.hour = 23;
     components.minute = 59;
     components.second = 59;
     return [[NSDate currentCalendar] dateFromComponents:components];
@@ -405,6 +423,26 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
     components.second = 59;
     NSRange range = [[NSDate currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:[NSDate date]];
     components.day = range.length;
+    return [[NSDate currentCalendar] dateFromComponents:components];
+}
+
+- (NSDate *) dateAtStartOfYear {
+    NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
+    components.month = 1;
+    components.day = 1;
+    components.hour = 0;
+    components.minute = 0;
+    components.second = 0;
+    return [[NSDate currentCalendar] dateFromComponents:components];
+}
+
+- (NSDate *) dateAtEndOfYear {
+    NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
+    components.month = 12;
+    components.day = 31;
+    components.hour = 23;
+    components.minute = 59;
+    components.second = 59;
     return [[NSDate currentCalendar] dateFromComponents:components];
 }
 

@@ -1,6 +1,6 @@
 PODS:
-  - Expecta (0.3.1)
-  - NSDate-Additions (0.1.0)
+  - Expecta (1.0.3)
+  - NSDate-Additions (0.0.8)
   - Specta (0.2.1)
 
 DEPENDENCIES:
@@ -10,11 +10,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   NSDate-Additions:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
-  NSDate-Additions: 2ec1e8e560e95f677c3e121b1294ba31140cbc11
-  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
+  NSDate-Additions: 4a2077d3f0e39a219cf2cc2d8cb9f83914423371
+  Specta: 15a276a6343867b426d5ed135d5aa4d04123a573
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.38.2

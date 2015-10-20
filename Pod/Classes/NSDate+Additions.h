@@ -85,20 +85,25 @@
 // Date extremes
 - (NSDate *) dateAtStartOfDay;
 - (NSDate *) dateAtEndOfDay;
+- (NSDate *) dateAtStartOfWeek;
+- (NSDate *) dateAtEndOfWeek;
 - (NSDate *) dateAtStartOfMonth;
 - (NSDate *) dateAtEndOfMonth;
-+ (NSDate *)dateAtStartOfPreviousWeek;
-+ (NSDate *)dateAtEndOfPreviousWeek;
-+ (NSDate *)dateAtStartOfWeek;
-+ (NSDate *)dateAtStartOfYear;
-+ (NSDate *)dateAtStartOfQuarter;
-+ (NSDate *)dateAtEndOfQuarter;
-+ (NSDate *)dateAtStartOfPreviousQuarter;
-+ (NSDate *)dateAtEndOfPreviousQuarter;
-+ (NSDate *)dateAtStartOfPreviousMonth;
-+ (NSDate *)dateAtEndOfPreviousMonth;
-+ (NSDate *)dateAtStartOfPreviousYear;
-+ (NSDate *)dateAtEndOfPreviousYear;
+- (NSDate *) dateAtStartOfYear;
+- (NSDate *) dateAtEndOfYear;
+
++ (NSDate *) dateAtStartOfPreviousWeek;
++ (NSDate *) dateAtEndOfPreviousWeek;
++ (NSDate *) dateAtStartOfWeek;
++ (NSDate *) dateAtStartOfYear;
++ (NSDate *) dateAtStartOfQuarter;
++ (NSDate *) dateAtEndOfQuarter;
++ (NSDate *) dateAtStartOfPreviousQuarter;
++ (NSDate *) dateAtEndOfPreviousQuarter;
++ (NSDate *) dateAtStartOfPreviousMonth;
++ (NSDate *) dateAtEndOfPreviousMonth;
++ (NSDate *) dateAtStartOfPreviousYear;
++ (NSDate *) dateAtEndOfPreviousYear;
 
 // Retrieving intervals
 - (NSInteger) minutesAfterDate: (NSDate *) aDate;
