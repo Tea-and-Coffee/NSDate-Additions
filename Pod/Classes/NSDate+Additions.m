@@ -156,6 +156,22 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
             (components1.day == components2.day));
 }
 
+- (BOOL)isTimeEarlierThanTime:(NSDate *)date
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSInteger comps = (NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit);
+    NSDateComponents *fromComponents = [calendar components:comps fromDate:self];
+    NSDateComponents *toComponents = [calendar components:comps fromDate:date];
+    NSDate *from = [calendar dateFromComponents:fromComponents];
+    NSDate *to = [calendar dateFromComponents:toComponents];
+    return [from isEarlierThanDate:to];
+}
+
+- (BOOL)isTimeLaterThanTime:(NSDate *)date
+{
+    return ![self isTimeEarlierThanTime: date];
+}
+
 - (BOOL) isToday
 {
     return [self isEqualToDateIgnoringTime:[NSDate date]];
