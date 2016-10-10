@@ -14,9 +14,12 @@
 
 #import "NSDate+Additions.h"
 
-// Thanks, AshFurrow
+#ifdef __IPHONE_8_0
 static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekOfYear |  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal);
-
+#else
+// Thanks, AshFurrow
+static const unsigned componentFlags = (NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit |  NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit);
+#endif
 
 @implementation NSDate (Additions)
 
@@ -159,7 +162,11 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 - (BOOL)isTimeEarlierThanTime:(NSDate *)date
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
+#ifdef __IPHONE_8_0
+    NSInteger comps = (NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond);
+#else
     NSInteger comps = (NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit);
+#endif
     NSDateComponents *fromComponents = [calendar components:comps fromDate:self];
     NSDateComponents *toComponents = [calendar components:comps fromDate:date];
     NSDate *from = [calendar dateFromComponents:fromComponents];
@@ -621,7 +628,13 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
     NSDate *today = [NSDate date];
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     NSDate *startOfQuarter;
-    [currentCalendar rangeOfUnit:NSQuarterCalendarUnit
+    
+#ifdef __IPHONE_8_0
+    NSCalendarUnit unit = NSCalendarUnitQuarter;
+#else
+    NSCalendarUnit unit = NSQuarterCalendarUnit;
+#endif
+    [currentCalendar rangeOfUnit:unit
                        startDate:&startOfQuarter
                         interval:NULL
                          forDate:today];
@@ -646,7 +659,13 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 + (NSDate *)dateAtStartOfPreviousQuarter {
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     NSDate *startOfQuarter;
-    [currentCalendar rangeOfUnit:NSQuarterCalendarUnit
+#ifdef __IPHONE_8_0
+    NSCalendarUnit unit = NSCalendarUnitQuarter;
+#else
+    NSCalendarUnit unit = NSQuarterCalendarUnit;
+#endif
+
+    [currentCalendar rangeOfUnit:unit
                        startDate:&startOfQuarter
                         interval:NULL
                          forDate:[self dateAtEndOfPreviousQuarter]];
