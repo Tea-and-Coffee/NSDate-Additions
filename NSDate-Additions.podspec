@@ -1,15 +1,6 @@
-#
-# Be sure to run `pod lib lint NSDate-Additions.podspec' to ensure this is a
-# valid spec and remove all comments before submitting the spec.
-#
-# Any lines starting with a # are optional, but encouraged
-#
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = "NSDate-Additions"
-  s.version          = "0.0.10"
+  s.version          = "0.0.11"
   s.summary          = "Helpful additions for NSDate."
   s.description      = <<-DESC
                        Fork from Erica https://github.com/erica/NSDate-Extensions
@@ -26,8 +17,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.module_name = "NSDate_Additions"
   s.source_files = 'Pod/Classes'
-  s.resource_bundles = {
-    'NSDate-Additions' => ['Pod/Assets/*.png']
-  }
 
 end
