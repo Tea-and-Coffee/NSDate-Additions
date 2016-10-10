@@ -6,7 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 pod "NSDate-Additions", :path => "../"
 
-target 'Tests', :exclusive => true do
+target 'Tests' do
   pod 'Specta', '~> 0.2.1'
   pod 'Expecta'
 end
