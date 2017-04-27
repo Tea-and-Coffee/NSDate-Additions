@@ -14,6 +14,7 @@
 
 @interface NSDate (Additions)
 + (NSCalendar *) currentCalendar; // avoid bottlenecks
++ (NSCalendar *) gregorianCalendar; // avoid bottlenecks
 
 // Relative dates from the current date
 + (NSDate *) dateTomorrow;
@@ -107,6 +108,12 @@
 + (NSDate *) dateAtEndOfPreviousMonth;
 + (NSDate *) dateAtStartOfPreviousYear;
 + (NSDate *) dateAtEndOfPreviousYear;
+
++ (NSDate *) dateOfPreviousAtMinuteIntervals: (NSInteger) aMinuteIntervals;
++ (NSDate *) dateOfNextAtMinuteIntervals: (NSInteger) aMinuteIntervals;
+
+- (NSDate *) dateOfPreviousAtMinuteIntervals: (NSInteger) aMinuteIntervals;
+- (NSDate *) dateOfNextAtMinuteIntervals: (NSInteger) aMinuteIntervals;
 
 // Retrieving intervals
 - (NSInteger) minutesAfterDate: (NSDate *) aDate;
